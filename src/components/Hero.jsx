@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { TypeAnimation } from 'react-type-animation';
 import gsap from "gsap";
 import ahPHoto from "../assets/ahPHoto.jpg";
 
@@ -105,8 +106,9 @@ export default function Hero() {
                         transition={{ delay: 0.5, duration: 0.6 }}
                         className="flex items-center gap-3 mb-6"
                     >
-                        <div className="w-12 h-12 glass-button rounded-full flex items-center justify-center animate-bounce">
-                            👋
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent 
+                                      flex items-center justify-center text-white">
+                            <i className="fa-solid fa-hand-wave text-lg"></i>
                         </div>
                         <span className="text-xl text-gray-300 font-medium">Hello, I'm</span>
                     </motion.div>
@@ -116,9 +118,20 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7, duration: 0.6 }}
-                        className="text-4xl lg:text-6xl font-bold text-primary mb-4"
+                        className="text-4xl lg:text-6xl font-bold text-secondary mb-4"
                     >
-                        Azizul Haque
+                        <TypeAnimation
+                            sequence={[
+                                1000, // Wait 1s before starting
+                                'Azizul Haque',
+                                2000, // Wait 2s after typing
+                            ]}
+                            wrapper="span"
+                            speed={30}
+                            style={{ display: 'inline-block' }}
+                            cursor={false}
+                            repeat={0}
+                        />
                     </motion.h1>
 
                     {/* Title */}
@@ -126,11 +139,9 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.9, duration: 0.6 }}
-                        className="text-5xl lg:text-7xl font-extrabold leading-tight mb-8"
+                        className="text-3xl lg:text-5xl font-bold leading-tight mb-8"
                     >
-                        <span className="text-gradient">Full Stack</span>
-                        <br />
-                        <span className="text-gradient-alt">Developer</span>
+                        <span className="text-gradient">Full Stack Developer</span>
                     </motion.h2>
 
                     {/* Description */}
@@ -138,12 +149,10 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.1, duration: 0.6 }}
-                        className="text-gray-300 text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl"
+                        className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl"
                     >
-                        I craft exceptional digital experiences using the 
-                        <span className="text-primary font-semibold"> MERN stack</span>, 
-                        transforming innovative ideas into powerful, scalable web applications 
-                        that drive business growth and user engagement.
+                        Building modern web applications with the 
+                        <span className="text-primary font-semibold"> MERN stack</span>.
                     </motion.p>
 
                     {/* Tech Stack */}
@@ -151,13 +160,15 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.3, duration: 0.6 }}
-                        className="flex flex-wrap gap-4 mb-8"
+                        className="flex flex-wrap gap-3 mb-8"
                     >
                         {techStack.map((tech, index) => (
                             <motion.span
                                 key={index}
-                                whileHover={{ scale: 1.1 }}
-                                className="glass px-4 py-2 rounded-full font-semibold text-primary hover:glass-button transition-all duration-300"
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                className="px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 
+                                         font-medium text-gray-300 hover:bg-primary/10 hover:border-primary/20 
+                                         hover:text-primary transition-all duration-300"
                             >
                                 {tech}
                             </motion.span>
@@ -174,19 +185,22 @@ export default function Hero() {
                         <motion.button
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            className="btn btn-primary btn-glow glass-button px-8 py-4 rounded-full text-lg font-semibold flex items-center gap-3 group"
+                            className="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-accent text-white 
+                                     font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 
+                                     transition-all duration-300 flex items-center justify-center gap-3"
                         >
-                            <span className="group-hover:animate-bounce">💼</span>
-                            Hire Me Now
-                            <span className="group-hover:animate-pulse">✨</span>
+                            <i className="fa-solid fa-message"></i>
+                            Get In Touch
                         </motion.button>
                         
                         <motion.button
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
-                            className="btn btn-outline glass px-8 py-4 rounded-full text-lg font-semibold hover:glass-button flex items-center gap-3 group"
+                            className="px-8 py-4 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 
+                                     text-gray-300 font-semibold text-lg hover:bg-white/10 hover:border-primary/20 
+                                     hover:text-primary transition-all duration-300 flex items-center justify-center gap-3"
                         >
-                            <span className="group-hover:animate-bounce">🚀</span>
+                            <i className="fa-solid fa-folder-open"></i>
                             View Projects
                         </motion.button>
                     </motion.div>
@@ -204,43 +218,16 @@ export default function Hero() {
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                whileHover={{ scale: 1.2, rotate: 10, y: -5 }}
-                                whileTap={{ scale: 0.9 }}
-                                className={`glass p-4 rounded-full text-2xl text-secondary ${social.color} 
-                                         hover:glass-button transition-all duration-300 group relative`}
+                                whileHover={{ scale: 1.1, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                className={`w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 
+                                         flex items-center justify-center text-gray-300 ${social.color} 
+                                         hover:bg-white/10 hover:border-primary/20 transition-all duration-300`}
                                 title={social.label}
                             >
-                                <i className={social.icon}></i>
-                                
-                                {/* Tooltip */}
-                                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 
-                                              glass px-3 py-1 rounded-lg text-sm font-medium opacity-0 
-                                              group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                                    {social.label}
-                                </div>
+                                <i className={`${social.icon} text-lg`}></i>
                             </motion.a>
                         ))}
-                    </motion.div>
-
-                    {/* Quick Stats */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1.9, duration: 0.6 }}
-                        className="flex gap-8 text-center"
-                    >
-                        <div>
-                            <div className="text-3xl font-bold text-primary">50+</div>
-                            <div className="text-sm text-gray-400">Projects</div>
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold text-accent">3+</div>
-                            <div className="text-sm text-gray-400">Years</div>
-                        </div>
-                        <div>
-                            <div className="text-3xl font-bold text-success">100%</div>
-                            <div className="text-sm text-gray-400">Success</div>
-                        </div>
                     </motion.div>
                 </div>
 
