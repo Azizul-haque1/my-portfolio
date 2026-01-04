@@ -15,143 +15,173 @@ export default function About() {
     }, []);
 
     const skills = [
-        { name: "Frontend Development", level: "Expert", technologies: ["React", "Next.js", "TypeScript", "Tailwind"] },
-        { name: "Backend Development", level: "Advanced", technologies: ["Node.js", "Express", "MongoDB", "PostgreSQL"] },
-        { name: "DevOps & Cloud", level: "Intermediate", technologies: ["AWS", "Docker", "CI/CD", "Vercel"] },
-        { name: "Mobile Development", level: "Intermediate", technologies: ["React Native", "Expo", "Flutter"] }
+        { 
+            name: "Frontend Development", 
+            level: "Advanced", 
+            technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+            icon: "fa-solid fa-code"
+        },
+        { 
+            name: "Backend Development", 
+            level: "Intermediate", 
+            technologies: ["Node.js", "Express", "MongoDB", "PostgreSQL"],
+            icon: "fa-solid fa-server"
+        },
+        { 
+            name: "Database Management", 
+            level: "Intermediate", 
+            technologies: ["MongoDB", "PostgreSQL", "MySQL", "Database Design"],
+            icon: "fa-solid fa-database"
+        },
+        { 
+            name: "Tools & Workflow", 
+            level: "Advanced", 
+            technologies: ["Git", "VS Code", "Postman", "Chrome DevTools"],
+            icon: "fa-solid fa-tools"
+        }
+    ];
+
+    const interests = [
+        { name: "Web Development", icon: "fa-solid fa-globe" },
+        { name: "Open Source", icon: "fa-brands fa-github" },
+        { name: "Learning", icon: "fa-solid fa-book" },
+        { name: "Problem Solving", icon: "fa-solid fa-puzzle-piece" }
     ];
 
     return (
-        <section id="about" className="py-20 relative overflow-hidden">
+        <section id="about" className="py-20 px-6 md:px-16 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-info/5 to-success/5 rounded-full blur-3xl"></div>
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div className="max-w-7xl mx-auto relative z-10">
 
-                {/* Hero Section */}
-                <div className="grid lg:grid-cols-5 gap-16 items-center mb-24">
-                    
-                    {/* Left Content - 3 columns */}
-                    <div className="lg:col-span-3 space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6">
-                                👋 Nice to meet you
-                            </div>
-                            
-                            <h2 className="text-5xl lg:text-7xl font-bold mb-6">
-                                I'm <span className="text-gradient">Azizul</span>
-                            </h2>
-                            
-                            <p className="text-2xl text-gray-400 mb-8 leading-relaxed">
-                                A passionate <span className="text-primary font-semibold">Full Stack Developer</span> who 
-                                loves creating digital experiences that make a difference.
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="grid grid-cols-3 gap-8"
-                        >
-                            <div className="text-center">
-                                <div className="text-4xl font-bold text-primary mb-2">50+</div>
-                                <div className="text-gray-400 text-sm">Projects</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-4xl font-bold text-accent mb-2">3+</div>
-                                <div className="text-gray-400 text-sm">Years</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-4xl font-bold text-success mb-2">100%</div>
-                                <div className="text-gray-400 text-sm">Success</div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="flex gap-4"
-                        >
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="btn btn-primary px-8 py-3 rounded-full font-semibold"
-                            >
-                                Let's Work Together
-                            </motion.button>
-                            
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="btn btn-outline px-8 py-3 rounded-full font-semibold"
-                            >
-                                Download CV
-                            </motion.button>
-                        </motion.div>
-                    </div>
-
-                    {/* Right Image - 2 columns */}
-                    <div className="lg:col-span-2">
-                        <motion.div
-                            ref={imageRef}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8 }}
-                            className="relative"
-                        >
-                            <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-xl"></div>
-                                <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                                    <img
-                                        src={ahPHoto}
-                                        alt="Azizul Haque"
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-
-                {/* About Story */}
+                {/* Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="max-w-4xl mx-auto text-center mb-24"
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-20"
                 >
-                    <h3 className="text-3xl font-bold text-gradient mb-8">My Story</h3>
-                    <div className="text-lg text-gray-300 leading-relaxed space-y-6">
-                        <p>
-                            My journey into web development began with curiosity and evolved into a passion for creating 
-                            digital solutions that solve real-world problems. With a strong foundation in the 
-                            MERN stack, I've dedicated myself to mastering modern web technologies.
-                        </p>
-                        <p>
-                            I believe in writing clean, maintainable code and creating user experiences that are not 
-                            just functional, but delightful. When I'm not coding, you'll find me exploring new 
-                            technologies, contributing to open-source projects, or learning from the developer community.
-                        </p>
-                    </div>
+                    <h2 className="text-4xl lg:text-6xl font-bold text-gradient mb-6">
+                        About Me
+                    </h2>
+                    <p className="text-gray-300 text-xl leading-relaxed max-w-3xl mx-auto">
+                        Passionate about creating digital experiences and 
+                        <span className="text-primary font-semibold"> learning new technologies</span> every day.
+                    </p>
                 </motion.div>
 
+                {/* Main Content */}
+                <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                    
+                    {/* Left Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="space-y-8"
+                    >
+                        <div>
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary 
+                                          rounded-full text-sm font-medium mb-6">
+                                <i className="fa-solid fa-hand-wave"></i>
+                                Nice to meet you
+                            </div>
+                            
+                            <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-secondary">
+                                I'm a <span className="text-gradient">Full Stack Developer</span> 
+                                <br />passionate about modern web technologies
+                            </h3>
+                            
+                            <div className="text-gray-300 text-lg leading-relaxed space-y-4">
+                                <p>
+                                    My journey into web development started with curiosity and has evolved into a 
+                                    passion for creating digital solutions. I love the challenge of turning ideas 
+                                    into functional, beautiful applications.
+                                </p>
+                                <p>
+                                    Currently focused on mastering the MERN stack and exploring modern frameworks. 
+                                    I believe in writing clean, maintainable code and creating user experiences 
+                                    that are both functional and delightful.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Quick Stats */}
+                        <div className="grid grid-cols-3 gap-6">
+                            <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                                <div className="text-2xl font-bold text-primary mb-1">20+</div>
+                                <div className="text-gray-400 text-sm">Projects</div>
+                            </div>
+                            <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                                <div className="text-2xl font-bold text-accent mb-1">2+</div>
+                                <div className="text-gray-400 text-sm">Years Learning</div>
+                            </div>
+                            <div className="text-center p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                                <div className="text-2xl font-bold text-success mb-1">100%</div>
+                                <div className="text-gray-400 text-sm">Dedication</div>
+                            </div>
+                        </div>
+
+                        {/* Interests */}
+                        <div>
+                            <h4 className="text-xl font-semibold text-secondary mb-4">What I'm Passionate About</h4>
+                            <div className="flex flex-wrap gap-3">
+                                {interests.map((interest, index) => (
+                                    <motion.div
+                                        key={index}
+                                        whileHover={{ scale: 1.05, y: -2 }}
+                                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 
+                                                 backdrop-blur-sm border border-white/10 hover:bg-white/10 
+                                                 hover:border-primary/20 transition-all duration-300"
+                                    >
+                                        <i className={`${interest.icon} text-primary text-sm`}></i>
+                                        <span className="text-gray-300 text-sm font-medium">{interest.name}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Right Image */}
+                    <motion.div
+                        ref={imageRef}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="relative"
+                    >
+                        <div className="relative w-80 h-80 lg:w-96 lg:h-96 mx-auto">
+                            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-xl"></div>
+                            <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 
+                                          shadow-2xl group">
+                                <img
+                                    src={ahPHoto}
+                                    alt="Profile"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+
                 {/* Skills Section */}
-                <div className="mb-24">
-                    <motion.h3
+                <div className="mb-20">
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl font-bold text-center text-gradient mb-16"
+                        className="text-center mb-16"
                     >
-                        What I Do Best
-                    </motion.h3>
+                        <h3 className="text-3xl font-bold text-gradient mb-4">
+                            Skills & Technologies
+                        </h3>
+                        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+                            Technologies I'm currently working with and continuously learning
+                        </p>
+                    </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-8">
                         {skills.map((skill, index) => (
@@ -160,30 +190,43 @@ export default function About() {
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 
-                                         hover:bg-white/10 transition-all duration-300 group"
+                                className="group"
                             >
-                                <div className="flex justify-between items-start mb-4">
-                                    <h4 className="text-xl font-semibold text-secondary">{skill.name}</h4>
-                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                        skill.level === 'Expert' ? 'bg-green-500/20 text-green-400' :
-                                        skill.level === 'Advanced' ? 'bg-blue-500/20 text-blue-400' :
-                                        'bg-yellow-500/20 text-yellow-400'
-                                    }`}>
-                                        {skill.level}
-                                    </span>
-                                </div>
-                                
-                                <div className="flex flex-wrap gap-2">
-                                    {skill.technologies.map((tech, techIndex) => (
-                                        <span
-                                            key={techIndex}
-                                            className="px-3 py-1 bg-white/10 text-gray-300 rounded-full text-sm 
-                                                     group-hover:bg-primary/20 group-hover:text-primary transition-all duration-300"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
+                                <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 
+                                              hover:bg-white/10 hover:border-primary/20 transition-all duration-300 h-full">
+                                    
+                                    <div className="flex items-start gap-4 mb-6">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent 
+                                                      flex items-center justify-center text-white group-hover:scale-110 
+                                                      transition-transform duration-300">
+                                            <i className={`${skill.icon} text-lg`}></i>
+                                        </div>
+                                        <div className="flex-1">
+                                            <h4 className="text-xl font-semibold text-secondary mb-2 group-hover:text-gradient 
+                                                         transition-all duration-300">
+                                                {skill.name}
+                                            </h4>
+                                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                                                skill.level === 'Advanced' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
+                                                'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                                            }`}>
+                                                {skill.level}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex flex-wrap gap-2">
+                                        {skill.technologies.map((tech, techIndex) => (
+                                            <span
+                                                key={techIndex}
+                                                className="px-3 py-1 bg-white/5 text-gray-300 rounded-full text-sm border border-white/10
+                                                         group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 
+                                                         transition-all duration-300"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
                             </motion.div>
                         ))}
@@ -199,24 +242,31 @@ export default function About() {
                 >
                     <div className="max-w-2xl mx-auto p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
                         <h3 className="text-3xl font-bold text-gradient mb-4">
-                            Ready to Build Something Amazing?
+                            Let's Build Something Together
                         </h3>
-                        <p className="text-gray-300 mb-6 text-lg">
-                            Let's collaborate and bring your ideas to life with modern web technologies.
+                        <p className="text-gray-300 mb-8 text-lg leading-relaxed">
+                            I'm always excited to work on new projects and collaborate with other developers. 
+                            Let's create something amazing!
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="btn btn-primary btn-glow px-8 py-3 rounded-full font-semibold"
+                                className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white 
+                                         font-semibold hover:shadow-lg hover:shadow-primary/25 transition-all duration-300
+                                         flex items-center justify-center gap-2"
                             >
-                                Start a Project
+                                <i className="fa-solid fa-message"></i>
+                                Get In Touch
                             </motion.button>
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="btn btn-outline px-8 py-3 rounded-full font-semibold"
+                                className="px-8 py-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 
+                                         text-gray-300 font-semibold hover:bg-white/10 hover:border-primary/20 
+                                         hover:text-primary transition-all duration-300 flex items-center justify-center gap-2"
                             >
+                                <i className="fa-solid fa-folder-open"></i>
                                 View My Work
                             </motion.button>
                         </div>
