@@ -11,12 +11,16 @@ import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import SmoothScroll from './components/SmoothScroll'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="min-h-screen relative overflow-x-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse"></div>

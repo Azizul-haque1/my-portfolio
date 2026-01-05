@@ -5,78 +5,150 @@ export default function FeaturedProjects() {
     const [selectedProject, setSelectedProject] = useState(null);
 
     const projects = [
-        {
-            id: 1,
-            name: "E-Commerce Platform",
-            image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-            category: "Full Stack",
-            status: "Live",
-            techStack: ["React", "Node.js", "Express", "MongoDB", "Stripe", "JWT"],
-            description: "A comprehensive e-commerce platform with user authentication, product management, shopping cart functionality, and secure payment processing. Features include user profiles, order tracking, admin dashboard, and responsive design.",
-            liveLink: "https://ecommerce-demo.vercel.app",
-            githubLink: "https://github.com/username/ecommerce-client",
-            challenges: [
-                "Implementing secure payment processing with Stripe integration",
-                "Managing complex state for shopping cart across multiple components",
-                "Optimizing database queries for product search and filtering",
-                "Handling real-time inventory updates to prevent overselling"
-            ],
-            improvements: [
-                "Add advanced product recommendation system using machine learning",
-                "Implement real-time chat support for customer service",
-                "Add multi-vendor marketplace functionality",
-                "Integrate with multiple payment gateways for global reach",
-                "Implement progressive web app (PWA) features for mobile users"
-            ]
-        },
-        {
-            id: 2,
-            name: "Task Management App",
-            image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-            category: "Web App",
-            status: "In Progress",
-            techStack: ["React", "Node.js", "Socket.io", "MongoDB", "Redux", "Material-UI"],
-            description: "A collaborative task management application with real-time updates, drag-and-drop functionality, team collaboration features, and project tracking. Includes kanban boards, time tracking, and team communication tools.",
-            liveLink: "https://taskmanager-demo.netlify.app",
-            githubLink: "https://github.com/username/taskmanager-client",
-            challenges: [
-                "Implementing real-time collaboration with Socket.io across multiple users",
-                "Creating smooth drag-and-drop functionality with proper state management",
-                "Designing an intuitive UI/UX for complex project management features",
-                "Handling offline functionality and data synchronization"
-            ],
-            improvements: [
-                "Add advanced analytics and reporting dashboard",
-                "Implement AI-powered task prioritization and scheduling",
-                "Add integration with popular tools like Slack, Google Calendar",
-                "Create mobile app version using React Native",
-                "Add advanced permission system for enterprise users"
-            ]
-        },
-        {
-            id: 3,
-            name: "Social Media Dashboard",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
-            category: "Dashboard",
-            status: "Live",
-            techStack: ["React", "D3.js", "Node.js", "Express", "PostgreSQL", "Chart.js"],
-            description: "An analytics dashboard for social media management with real-time data visualization, automated reporting, and multi-platform integration. Features interactive charts, performance metrics, and content scheduling.",
-            liveLink: "https://socialdash-demo.vercel.app",
-            githubLink: "https://github.com/username/socialdash-client",
-            challenges: [
-                "Integrating multiple social media APIs with different rate limits",
-                "Creating responsive and interactive data visualizations",
-                "Handling large datasets efficiently for real-time updates",
-                "Implementing secure OAuth authentication for multiple platforms"
-            ],
-            improvements: [
-                "Add AI-powered content suggestion and optimization",
-                "Implement advanced sentiment analysis for social mentions",
-                "Add automated posting and scheduling features",
-                "Create white-label solution for agencies",
-                "Add competitor analysis and benchmarking tools"
-            ]
-        },
+     {
+  id: 1,
+  name: "ClubSphere – club & Event Management Platform",
+  image: "https://i.ibb.co.com/Y783rj2K/Screenshot-2026-01-05-at-8-32-37-AM.png",
+  category: "Full Stack (MERN)",
+  status: "Live",
+  techStack: [
+    "React",
+      "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Stripe",
+    "Firebase Authentication",
+    "TanStack Query",
+    "Tailwind CSS",
+    "DaisyUI",
+    "Framer Motion"
+  ],
+  description:
+    "ClubSphere is a full-stack MERN web application designed to help users discover, join, and manage local clubs and events. It features role-based dashboards for Admins, Club Managers, and Members, enabling seamless club creation, membership management, event registration, and secure Stripe payments. The platform focuses on real-world club management scenarios, secure authentication, and a modern recruiter-friendly UI.",
+  liveLink: "https://club-sphere.netlify.app",
+  githubLink: "https://github.com/Azizul-haque1/club-sphere-client",
+    
+  features: [
+    "Firebase authentication with email/password and Google login",
+    "JWT-based secure API access with server-side token verification",
+    "Role-based protected routes (Admin, Club Manager, Member)",
+    "Browse approved clubs and upcoming events with server-side search and filtering",
+    "Member dashboard for club memberships, event registrations, and payment history",
+    "Club Manager dashboard for managing clubs, events, members, and payments",
+    "Admin dashboard for platform monitoring, role management, and approvals",
+    "Secure Stripe payments for memberships and event registrations",
+    "Responsive design with smooth animations using Framer Motion"
+  ],
+  challenges: [
+    "Implementing role-based access control across client and server",
+    "Securing APIs using Firebase Admin SDK and JWT verification",
+    "Handling Stripe payment flows for memberships and events",
+    "Designing scalable MongoDB schemas for clubs, events, and payments",
+    "Managing complex dashboard states for different user roles"
+  ],
+  improvements: [
+    "Add real-time notifications for event updates and approvals",
+    "Implement email notifications for memberships and payments",
+    "Add analytics dashboard with advanced charts and insights",
+    "Introduce multi-language support",
+    "Convert the platform into a Progressive Web App (PWA)"
+  ]
+    }
+    ,
+    {
+    id: 2,
+    name: "PlateShare — Community Food Sharing Platform",
+    image: "https://i.ibb.co.com/TZNRKgV/Screenshot-2026-01-05-at-8-43-12-AM.png",
+    category: "Full Stack (MERN)",
+    status: "Live",
+    techStack: [
+        "React",
+        "Framer Motion",
+        "Node.js",
+        "Express.js",
+        "React Router",
+        "Tailwind CSS",
+        "MongoDB",
+        "Firebase Authentication",
+        "SweetAlert2",
+        "ImgBB"
+    ],
+    description:
+        "PlateShare is a community-driven food sharing platform built with the MERN stack. It enables users to donate surplus food, browse available donations, and request food from others, helping reduce food waste while supporting the community through a clean and modern web interface.",
+    liveLink: "https://plate-share1.netlify.app",
+    githubLink: "https://github.com/Azizul-haque1/plate-share-client",
+    features: [
+        "Donate surplus food with details like quantity, pickup location, expiry date, and images",
+        "Firebase authentication with email/password and Google login",
+        "Protected private routes with persistent login sessions",
+        "Full CRUD functionality for food posts",
+        "Food request system with accept/reject flow",
+        "Automatic status update when food is donated",
+        "Responsive UI for mobile, tablet, and desktop devices",
+        "Smooth animations using Framer Motion",
+        "Interactive alerts using SweetAlert2"
+    ],
+    challenges: [
+        "Designing a smooth food request and donation workflow",
+        "Managing food status transitions across user actions",
+        "Ensuring secure access to private routes",
+        "Building a responsive layout for multiple screen sizes",
+        "Handling image uploads efficiently with ImgBB"
+    ],
+    improvements: [
+        "Add real-time notifications for request updates",
+        "Implement location-based food discovery",
+        "Add user rating and trust system",
+        "Introduce admin moderation dashboard",
+        "Add Progressive Web App (PWA) support"
+    ]
+    },
+   {
+  id: 3,
+  name: "Hero-Apps — Modern App Store Interface",
+  image: "https://i.ibb.co.com/JFKSLTcP/Screenshot-2026-01-05-at-8-56-30-AM.png",
+  category: "Frontend (React)",
+  status: "Live",
+  techStack: [
+    "React",
+    "React Router",
+    "Recharts",
+    "Tailwind CSS",
+    "LocalStorage API",
+    "Netlify"
+  ],
+  description:
+    "Hero-Apps is a modern, fully responsive React application that simulates an App Store experience. Users can browse apps, search in real time, view detailed app information, install or uninstall apps using LocalStorage, and visualize reviews through interactive charts.",
+  liveLink: "https://b12-a08-hero-apps-ah1.netlify.app/",
+  githubLink: "https://github.com/username/hero-apps",
+  features: [
+    "Fully responsive multi-page layout with smooth loading animations",
+    "Home page with banner, statistics, and top apps showcase",
+    "All Apps page with live, case-insensitive search and app count indicator",
+    "Detailed app pages with ratings, downloads, and descriptions",
+    "Install and uninstall apps using LocalStorage with instant UI sync",
+    "My Installation page to manage installed apps",
+    "Sorting by download count (high to low and low to high)",
+    "Interactive review charts built with Recharts",
+    "Toast notifications for install and uninstall actions",
+    "Custom 404 page and graceful fallback when no apps are found"
+  ],
+  challenges: [
+    "Managing LocalStorage state synchronization with React UI",
+    "Implementing fast and responsive real-time search",
+    "Designing reusable components for scalable UI",
+    "Handling route reloads correctly on Netlify deployment",
+    "Creating clear data visualization using Recharts"
+  ],
+  improvements: [
+    "Add user authentication for personalized installations",
+    "Introduce app categories and advanced filters",
+    "Implement dark mode toggle",
+    "Add user reviews and ratings submission",
+    "Convert the app into a Progressive Web App (PWA)"
+  ]
+}
+,
         {
             id: 4,
             name: "Weather Forecast App",
@@ -280,19 +352,19 @@ export default function FeaturedProjects() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-start justify-center p-4 overflow-y-auto"
                     onClick={closeProjectModal}
                 >
                     <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.8, opacity: 0 }}
-                        className="bg-neutral/95 backdrop-blur-xl border border-white/10 rounded-3xl max-w-4xl w-full 
-                                 max-h-[90vh] overflow-y-auto"
+                        initial={{ scale: 0.8, opacity: 0, y: 50 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 0.8, opacity: 0, y: 50 }}
+                        className="bg-neutral/95 backdrop-blur-xl border border-white/10 rounded-3xl w-full max-w-4xl 
+                                 my-8 relative"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Modal Header */}
-                        <div className="relative p-8 border-b border-white/10">
+                        {/* Modal Header - Fixed */}
+                        <div className="sticky top-0 z-10 p-8 border-b border-white/10 bg-neutral/95 backdrop-blur-xl rounded-t-3xl">
                             <button
                                 onClick={closeProjectModal}
                                 className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 
@@ -304,17 +376,17 @@ export default function FeaturedProjects() {
                                 <i className="fa-solid fa-xmark text-lg"></i>
                             </button>
                             
-                            <div className="flex items-start gap-6">
+                            <div className="flex items-start gap-6 pr-16">
                                 <img
                                     src={selectedProject.image}
                                     alt={selectedProject.name}
-                                    className="w-24 h-24 rounded-2xl object-cover"
+                                    className="w-24 h-24 rounded-2xl object-cover flex-shrink-0"
                                 />
-                                <div className="flex-1">
-                                    <h2 className="text-3xl font-bold text-gradient mb-2">
+                                <div className="flex-1 min-w-0">
+                                    <h2 className="text-3xl font-bold text-gradient mb-2 truncate">
                                         {selectedProject.name}
                                     </h2>
-                                    <div className="flex items-center gap-4 mb-4">
+                                    <div className="flex items-center gap-4 mb-4 flex-wrap">
                                         <span className="px-3 py-1 rounded-full text-sm bg-primary/20 text-primary border border-primary/30">
                                             {selectedProject.category}
                                         </span>
@@ -329,73 +401,77 @@ export default function FeaturedProjects() {
                             </div>
                         </div>
 
-                        {/* Modal Content */}
-                        <div className="p-8 space-y-8">
-                            {/* Description */}
-                            <div>
-                                <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
-                                    <i className="fa-solid fa-info-circle text-primary"></i>
-                                    Project Description
-                                </h3>
-                                <p className="text-gray-300 leading-relaxed text-lg">
-                                    {selectedProject.description}
-                                </p>
-                            </div>
+                        {/* Modal Content - Scrollable */}
+                        <div className="max-h-[70vh] overflow-y-auto custom-scrollbar">
+                            <div className="p-8 space-y-8">
+                                {/* Description */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                                        <i className="fa-solid fa-info-circle text-primary"></i>
+                                        Project Description
+                                    </h3>
+                                    <p className="text-gray-300 leading-relaxed text-lg">
+                                        {selectedProject.description}
+                                    </p>
+                                </div>
 
-                            {/* Technology Stack */}
-                            <div>
-                                <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
-                                    <i className="fa-solid fa-code text-primary"></i>
-                                    Technology Stack
-                                </h3>
-                                <div className="flex flex-wrap gap-3">
-                                    {selectedProject.techStack.map((tech, idx) => (
-                                        <span
-                                            key={idx}
-                                            className="px-4 py-2 rounded-full bg-white/5 border border-white/10 
-                                                     text-gray-300 hover:bg-primary/10 hover:border-primary/20 
-                                                     hover:text-primary transition-all duration-300 font-medium"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
+                                {/* Technology Stack */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                                        <i className="fa-solid fa-code text-primary"></i>
+                                        Technology Stack
+                                    </h3>
+                                    <div className="flex flex-wrap gap-3">
+                                        {selectedProject.techStack.map((tech, idx) => (
+                                            <span
+                                                key={idx}
+                                                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 
+                                                         text-gray-300 hover:bg-primary/10 hover:border-primary/20 
+                                                         hover:text-primary transition-all duration-300 font-medium"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Challenges */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                                        <i className="fa-solid fa-mountain text-accent"></i>
+                                        Challenges Faced
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {selectedProject.challenges.map((challenge, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+                                                <i className="fa-solid fa-circle-dot text-accent text-sm mt-2 flex-shrink-0"></i>
+                                                <span className="text-gray-300 leading-relaxed">{challenge}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Future Improvements */}
+                                <div>
+                                    <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                                        <i className="fa-solid fa-lightbulb text-success"></i>
+                                        Future Improvements
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {selectedProject.improvements.map((improvement, idx) => (
+                                            <div key={idx} className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
+                                                <i className="fa-solid fa-arrow-trend-up text-success text-sm mt-2 flex-shrink-0"></i>
+                                                <span className="text-gray-300 leading-relaxed">{improvement}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            {/* Challenges */}
-                            <div>
-                                <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
-                                    <i className="fa-solid fa-mountain text-accent"></i>
-                                    Challenges Faced
-                                </h3>
-                                <ul className="space-y-3">
-                                    {selectedProject.challenges.map((challenge, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-gray-300">
-                                            <i className="fa-solid fa-circle-dot text-accent text-sm mt-2 flex-shrink-0"></i>
-                                            <span className="leading-relaxed">{challenge}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Future Improvements */}
-                            <div>
-                                <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
-                                    <i className="fa-solid fa-lightbulb text-success"></i>
-                                    Future Improvements
-                                </h3>
-                                <ul className="space-y-3">
-                                    {selectedProject.improvements.map((improvement, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-gray-300">
-                                            <i className="fa-solid fa-arrow-trend-up text-success text-sm mt-2 flex-shrink-0"></i>
-                                            <span className="leading-relaxed">{improvement}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Action Links */}
-                            <div className="flex gap-4 pt-6 border-t border-white/10">
+                        {/* Modal Footer - Fixed */}
+                        <div className="sticky bottom-0 p-8 border-t border-white/10 bg-neutral/95 backdrop-blur-xl rounded-b-3xl">
+                            <div className="flex gap-4">
                                 <motion.a
                                     href={selectedProject.liveLink}
                                     target="_blank"

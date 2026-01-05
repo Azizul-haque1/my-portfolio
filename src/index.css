@@ -289,8 +289,252 @@ body {
   background: linear-gradient(135deg, #ec4899, #8b5cf6);
 }
 
+/* Custom scrollbar for modal */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(6, 182, 212, 0.6) rgba(248, 250, 252, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(248, 250, 252, 0.05);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.8), rgba(236, 72, 153, 0.8));
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 1), rgba(236, 72, 153, 1));
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+}
+
 /* Selection Color */
 ::selection {
   background: rgba(6, 182, 212, 0.3);
   color: white;
+}
+
+/* Premium Animated Custom Cursor */
+body {
+  cursor: none;
+}
+
+* {
+  cursor: none !important;
+}
+
+/* Main cursor dot */
+.premium-cursor {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(135deg, #ffffff 0%, #06b6d4 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translate(-50%, -50%);
+  box-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 16px rgba(6, 182, 212, 0.4);
+}
+
+/* Cursor trail/outline */
+.premium-cursor-trail {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center, 
+    rgba(255, 255, 255, 0.02) 0%, 
+    rgba(6, 182, 212, 0.05) 50%, 
+    transparent 100%);
+  backdrop-filter: blur(1px);
+}
+
+/* Hover state - Interactive elements */
+.premium-cursor.hover {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  box-shadow: 
+    0 0 12px rgba(236, 72, 153, 0.8),
+    0 0 24px rgba(139, 92, 246, 0.4),
+    0 0 36px rgba(236, 72, 153, 0.2);
+  animation: premiumPulse 1.5s ease-in-out infinite;
+}
+
+.premium-cursor-trail.hover {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(236, 72, 153, 0.3);
+  background: radial-gradient(circle at center, 
+    rgba(236, 72, 153, 0.05) 0%, 
+    rgba(139, 92, 246, 0.08) 50%, 
+    transparent 100%);
+  box-shadow: 
+    0 0 20px rgba(236, 72, 153, 0.2),
+    inset 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+/* Text selection state */
+.premium-cursor.text {
+  width: 1px;
+  height: 20px;
+  border-radius: 0.5px;
+  background: linear-gradient(180deg, #ffffff 0%, #06b6d4 100%);
+  box-shadow: 
+    0 0 6px rgba(6, 182, 212, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.premium-cursor-trail.text {
+  width: 6px;
+  height: 26px;
+  border-radius: 3px;
+  border-color: rgba(6, 182, 212, 0.2);
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.02) 0%, 
+    rgba(6, 182, 212, 0.05) 100%);
+}
+
+/* Click/Active state */
+.premium-cursor.active {
+  transform: translate(-50%, -50%) scale(0.7);
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  box-shadow: 
+    0 0 15px rgba(245, 158, 11, 0.8),
+    0 0 30px rgba(239, 68, 68, 0.4);
+}
+
+.premium-cursor-trail.active {
+  transform: translate(-50%, -50%) scale(0.8);
+  border-color: rgba(245, 158, 11, 0.4);
+  background: radial-gradient(circle at center, 
+    rgba(245, 158, 11, 0.08) 0%, 
+    rgba(239, 68, 68, 0.05) 100%);
+}
+
+/* Loading/Processing state */
+.premium-cursor.loading {
+  width: 6px;
+  height: 6px;
+  background: conic-gradient(from 0deg, 
+    rgba(6, 182, 212, 0.2), 
+    rgba(236, 72, 153, 1), 
+    rgba(139, 92, 246, 0.8), 
+    rgba(6, 182, 212, 0.2));
+  animation: premiumSpin 1s linear infinite;
+  box-shadow: 
+    0 0 10px rgba(236, 72, 153, 0.8),
+    0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+.premium-cursor-trail.loading {
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+  background: conic-gradient(from 180deg, 
+    rgba(6, 182, 212, 0.1), 
+    rgba(236, 72, 153, 0.2), 
+    rgba(139, 92, 246, 0.15), 
+    rgba(6, 182, 212, 0.1));
+  animation: premiumSpinReverse 2s linear infinite;
+}
+
+/* Animations */
+@keyframes premiumPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes premiumSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes premiumSpinReverse {
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* Idle breathing animation */
+.premium-cursor-trail {
+  animation: premiumBreathe 4s ease-in-out infinite;
+}
+
+@keyframes premiumBreathe {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Disable breathing on interaction */
+.premium-cursor-trail.hover,
+.premium-cursor-trail.text,
+.premium-cursor-trail.active,
+.premium-cursor-trail.loading {
+  animation: none;
+}
+
+/* Magnetic effect for buttons */
+.premium-cursor.magnetic {
+  transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Fallback for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body, * {
+    cursor: auto !important;
+  }
+  
+  .premium-cursor,
+  .premium-cursor-trail {
+    display: none !important;
+  }
+}
+
+/* Accessibility - Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .premium-cursor,
+  .premium-cursor-trail {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .premium-cursor {
+    background: #ffffff;
+    box-shadow: 0 0 4px #000000;
+  }
+  
+  .premium-cursor-trail {
+    border-color: #ffffff;
+    background: transparent;
+  }
 }
