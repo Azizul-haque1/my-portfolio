@@ -48,8 +48,7 @@ export default function About() {
                 { name: "MongoDB", level: 85, icon: "fa-solid fa-leaf" },
                 { name: "PostgreSQL", level: 75, icon: "fa-solid fa-elephant" },
                 { name: "MySQL", level: 70, icon: "fa-solid fa-database" },
-                { name: "Firebase", level: 65, icon: "fa-solid fa-fire" },
-                { name: "AWS Basics", level: 60, icon: "fa-brands fa-aws" }
+                { name: "Firebase", level: 65, icon: "fa-solid fa-fire" }
             ]
         },
         { 
