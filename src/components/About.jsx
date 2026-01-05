@@ -16,28 +16,53 @@ export default function About() {
 
     const skills = [
         { 
-            name: "Frontend Development", 
-            level: "Advanced", 
-            technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-            icon: "fa-solid fa-code"
+            category: "Frontend Development",
+            color: "from-blue-500 to-cyan-500",
+            icon: "fa-solid fa-code",
+            skills: [
+                { name: "React", level: 90, icon: "fa-brands fa-react" },
+                { name: "Next.js", level: 85, icon: "fa-solid fa-n" },
+                { name: "TypeScript", level: 80, icon: "fa-brands fa-js" },
+                { name: "Tailwind CSS", level: 95, icon: "fa-brands fa-css3-alt" },
+                { name: "HTML5", level: 95, icon: "fa-brands fa-html5" },
+                { name: "JavaScript", level: 90, icon: "fa-brands fa-js-square" }
+            ]
         },
         { 
-            name: "Backend Development", 
-            level: "Intermediate", 
-            technologies: ["Node.js", "Express", "MongoDB", "PostgreSQL"],
-            icon: "fa-solid fa-server"
+            category: "Backend Development",
+            color: "from-green-500 to-emerald-500",
+            icon: "fa-solid fa-server",
+            skills: [
+                { name: "Node.js", level: 85, icon: "fa-brands fa-node-js" },
+                { name: "Express.js", level: 80, icon: "fa-solid fa-e" },
+                { name: "REST APIs", level: 85, icon: "fa-solid fa-plug" },
+                { name: "Authentication", level: 75, icon: "fa-solid fa-shield-halved" },
+                { name: "Socket.io", level: 70, icon: "fa-solid fa-comments" }
+            ]
         },
         { 
-            name: "Database Management", 
-            level: "Intermediate", 
-            technologies: ["MongoDB", "PostgreSQL", "MySQL", "Database Design"],
-            icon: "fa-solid fa-database"
+            category: "Database & Cloud",
+            color: "from-purple-500 to-pink-500",
+            icon: "fa-solid fa-database",
+            skills: [
+                { name: "MongoDB", level: 85, icon: "fa-solid fa-leaf" },
+                { name: "PostgreSQL", level: 75, icon: "fa-solid fa-elephant" },
+                { name: "MySQL", level: 70, icon: "fa-solid fa-database" },
+                { name: "Firebase", level: 65, icon: "fa-solid fa-fire" },
+                { name: "AWS Basics", level: 60, icon: "fa-brands fa-aws" }
+            ]
         },
         { 
-            name: "Tools & Workflow", 
-            level: "Advanced", 
-            technologies: ["Git", "VS Code", "Postman", "Chrome DevTools"],
-            icon: "fa-solid fa-tools"
+            category: "Tools & Workflow",
+            color: "from-orange-500 to-red-500",
+            icon: "fa-solid fa-tools",
+            skills: [
+                { name: "Git & GitHub", level: 90, icon: "fa-brands fa-github" },
+                { name: "VS Code", level: 95, icon: "fa-solid fa-code" },
+                { name: "Postman", level: 85, icon: "fa-solid fa-paper-plane" },
+                { name: "Chrome DevTools", level: 90, icon: "fa-brands fa-chrome" },
+                { name: "NPM/Yarn", level: 85, icon: "fa-brands fa-npm" }
+            ]
         }
     ];
 
@@ -222,58 +247,137 @@ export default function About() {
                             Skills & Technologies
                         </h3>
                         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-                            Technologies I'm currently working with and continuously learning
+                            My technical expertise across different areas of web development
                         </p>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-8">
-                        {skills.map((skill, index) => (
+                        {skills.map((category, categoryIndex) => (
                             <motion.div
-                                key={index}
+                                key={categoryIndex}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                                 className="group"
                             >
-                                <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 
-                                              hover:bg-white/10 hover:border-primary/20 transition-all duration-300 h-full">
+                                <div className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 
+                                              hover:bg-white/8 hover:border-primary/20 transition-all duration-500 h-full">
                                     
-                                    <div className="flex items-start gap-4 mb-6">
-                                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent 
-                                                      flex items-center justify-center text-white group-hover:scale-110 
-                                                      transition-transform duration-300">
-                                            <i className={`${skill.icon} text-lg`}></i>
+                                    {/* Category Header */}
+                                    <div className="flex items-center gap-4 mb-8">
+                                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} 
+                                                      flex items-center justify-center text-white text-2xl
+                                                      group-hover:scale-110 transition-transform duration-300`}>
+                                            <i className={category.icon}></i>
                                         </div>
-                                        <div className="flex-1">
-                                            <h4 className="text-xl font-semibold text-secondary mb-2 group-hover:text-gradient 
+                                        <div>
+                                            <h4 className="text-2xl font-bold text-secondary group-hover:text-gradient 
                                                          transition-all duration-300">
-                                                {skill.name}
+                                                {category.category}
                                             </h4>
-                                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                                skill.level === 'Advanced' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
-                                                'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                                            }`}>
-                                                {skill.level}
-                                            </span>
+                                            <p className="text-gray-400 text-sm">
+                                                {category.skills.length} Technologies
+                                            </p>
                                         </div>
                                     </div>
-                                    
-                                    <div className="flex flex-wrap gap-2">
-                                        {skill.technologies.map((tech, techIndex) => (
-                                            <span
-                                                key={techIndex}
-                                                className="px-3 py-1 bg-white/5 text-gray-300 rounded-full text-sm border border-white/10
-                                                         group-hover:bg-primary/10 group-hover:text-primary group-hover:border-primary/20 
-                                                         transition-all duration-300"
+
+                                    {/* Skills List with Progress Bars */}
+                                    <div className="space-y-6">
+                                        {category.skills.map((skill, skillIndex) => (
+                                            <motion.div
+                                                key={skillIndex}
+                                                initial={{ opacity: 0, x: -20 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{ duration: 0.5, delay: (categoryIndex * 0.1) + (skillIndex * 0.05) }}
+                                                className="group/skill"
                                             >
-                                                {tech}
-                                            </span>
+                                                {/* Skill Name and Percentage */}
+                                                <div className="flex items-center justify-between mb-3">
+                                                    <div className="flex items-center gap-3">
+                                                        <i className={`${skill.icon} text-primary text-lg`}></i>
+                                                        <span className="text-gray-300 font-medium group-hover/skill:text-secondary 
+                                                                       transition-colors duration-300">
+                                                            {skill.name}
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-primary font-bold text-sm">
+                                                        {skill.level}%
+                                                    </span>
+                                                </div>
+
+                                                {/* Progress Bar */}
+                                                <div className="relative">
+                                                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                                        <motion.div
+                                                            initial={{ width: 0 }}
+                                                            whileInView={{ width: `${skill.level}%` }}
+                                                            transition={{ duration: 1.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1), ease: "easeOut" }}
+                                                            className={`h-full bg-gradient-to-r ${category.color} rounded-full relative`}
+                                                        >
+                                                            {/* Glow Effect */}
+                                                            <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
+                                                        </motion.div>
+                                                    </div>
+                                                    
+                                                    {/* Skill Level Indicator */}
+                                                    <motion.div
+                                                        initial={{ scale: 0 }}
+                                                        whileInView={{ scale: 1 }}
+                                                        transition={{ duration: 0.5, delay: (categoryIndex * 0.2) + (skillIndex * 0.1) + 1 }}
+                                                        className="absolute -top-1 bg-white/10 backdrop-blur-sm border border-white/20 
+                                                                 rounded-full w-4 h-4 flex items-center justify-center"
+                                                        style={{ left: `calc(${skill.level}% - 8px)` }}
+                                                    >
+                                                        <div className={`w-2 h-2 bg-gradient-to-r ${category.color} rounded-full`}></div>
+                                                    </motion.div>
+                                                </div>
+                                            </motion.div>
                                         ))}
+                                    </div>
+
+                                    {/* Category Stats */}
+                                    <div className="mt-8 pt-6 border-t border-white/10">
+                                        <div className="flex justify-between items-center text-sm">
+                                            <span className="text-gray-400">Average Proficiency</span>
+                                            <span className="text-primary font-bold">
+                                                {Math.round(category.skills.reduce((acc, skill) => acc + skill.level, 0) / category.skills.length)}%
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* Overall Skills Summary */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="mt-12 text-center"
+                    >
+                        <div className="max-w-4xl mx-auto p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                            <h4 className="text-2xl font-bold text-gradient mb-6">
+                                Technical Proficiency Overview
+                            </h4>
+                            
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                {skills.map((category, index) => {
+                                    const avgLevel = Math.round(category.skills.reduce((acc, skill) => acc + skill.level, 0) / category.skills.length);
+                                    return (
+                                        <div key={index} className="text-center">
+                                            <div className={`w-16 h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-r ${category.color} 
+                                                          flex items-center justify-center text-white text-xl`}>
+                                                <i className={category.icon}></i>
+                                            </div>
+                                            <div className="text-2xl font-bold text-primary mb-1">{avgLevel}%</div>
+                                            <div className="text-sm text-gray-400">{category.category.split(' ')[0]}</div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
 
                 {/* Call to Action */}
