@@ -41,13 +41,6 @@ export default function About() {
         }
     ];
 
-    const interests = [
-        { name: "Web Development", icon: "fa-solid fa-globe" },
-        { name: "Open Source", icon: "fa-brands fa-github" },
-        { name: "Learning", icon: "fa-solid fa-book" },
-        { name: "Problem Solving", icon: "fa-solid fa-puzzle-piece" }
-    ];
-
     return (
         <section id="about" className="py-20 px-6 md:px-16 relative overflow-hidden">
             {/* Background Elements */}
@@ -90,21 +83,64 @@ export default function About() {
                             </div>
                             
                             <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-secondary">
-                                I'm a <span className="text-gradient">Full Stack Developer</span> 
-                                <br />passionate about modern web technologies
+                                I'm <span className="text-gradient">Azizul Haque</span>, 
+                                <br />a passionate Full Stack Developer
                             </h3>
                             
-                            <div className="text-gray-300 text-lg leading-relaxed space-y-4">
-                                <p>
-                                    My journey into web development started with curiosity and has evolved into a 
-                                    passion for creating digital solutions. I love the challenge of turning ideas 
-                                    into functional, beautiful applications.
-                                </p>
-                                <p>
-                                    Currently focused on mastering the MERN stack and exploring modern frameworks. 
-                                    I believe in writing clean, maintainable code and creating user experiences 
-                                    that are both functional and delightful.
-                                </p>
+                            <div className="text-gray-300 text-lg leading-relaxed space-y-6">
+                                <div>
+                                    <h4 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
+                                        <i className="fa-solid fa-code"></i>
+                                        My Programming Journey
+                                    </h4>
+                                    <p>
+                                        My coding adventure began during my university days when I first encountered HTML and CSS. 
+                                        What started as curiosity quickly turned into passion when I built my first interactive website. 
+                                        The moment I saw my code come to life in the browser, I knew I had found my calling. 
+                                        Since then, I've been on an exciting journey of continuous learning, diving deep into 
+                                        JavaScript, React, Node.js, and the entire MERN stack ecosystem.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-xl font-semibold text-accent mb-3 flex items-center gap-2">
+                                        <i className="fa-solid fa-heart"></i>
+                                        What I Love Doing
+                                    </h4>
+                                    <p>
+                                        I'm passionate about building user-centric web applications that solve real problems. 
+                                        There's something magical about transforming an idea into a functional, beautiful application 
+                                        that people can actually use. I particularly enjoy working on full-stack projects where 
+                                        I can handle everything from database design to responsive frontend interfaces. 
+                                        The challenge of optimizing performance and creating seamless user experiences keeps me motivated every day.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-xl font-semibold text-info mb-3 flex items-center gap-2">
+                                        <i className="fa-solid fa-gamepad2"></i>
+                                        Beyond the Code
+                                    </h4>
+                                    <p>
+                                        When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source projects, 
+                                        or playing cricket with friends. I'm also an avid reader of tech blogs and enjoy watching sci-fi movies 
+                                        that inspire new ideas for my projects. Photography is another hobby of mine - I love capturing moments 
+                                        and applying the same attention to detail I use in coding to create compelling visual stories.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-xl font-semibold text-success mb-3 flex items-center gap-2">
+                                        <i className="fa-solid fa-lightbulb"></i>
+                                        My Approach
+                                    </h4>
+                                    <p>
+                                        I believe in writing clean, maintainable code and always staying curious about new technologies. 
+                                        Every project is an opportunity to learn something new and push my boundaries. I'm a firm believer 
+                                        in the power of collaboration and enjoy working with teams where we can learn from each other 
+                                        and create something amazing together.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -128,7 +164,14 @@ export default function About() {
                         <div>
                             <h4 className="text-xl font-semibold text-secondary mb-4">What I'm Passionate About</h4>
                             <div className="flex flex-wrap gap-3">
-                                {interests.map((interest, index) => (
+                                {[
+                                    { name: "Web Development", icon: "fa-solid fa-globe" },
+                                    { name: "Open Source", icon: "fa-brands fa-github" },
+                                    { name: "Cricket", icon: "fa-solid fa-baseball" },
+                                    { name: "Photography", icon: "fa-solid fa-camera" },
+                                    { name: "Sci-Fi Movies", icon: "fa-solid fa-film" },
+                                    { name: "Tech Blogs", icon: "fa-solid fa-blog" }
+                                ].map((interest, index) => (
                                     <motion.div
                                         key={index}
                                         whileHover={{ scale: 1.05, y: -2 }}
