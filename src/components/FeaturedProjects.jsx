@@ -111,9 +111,9 @@ export default function FeaturedProjects() {
   status: "Live",
   techStack: [
     "React",
-    "React Router",
     "Recharts",
     "Tailwind CSS",
+    "React Router",
     "LocalStorage API",
     "Netlify"
   ],

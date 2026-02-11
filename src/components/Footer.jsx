@@ -84,14 +84,14 @@ export default function Footer() {
                             <div className="space-y-3 mb-6">
                                 <div className="flex items-center gap-3 text-gray-300">
                                     <span className="text-primary">📧</span>
-                                    <a href="mailto:azizul@example.com" className="hover:text-primary transition-colors">
-                                        azizul@example.com
+                                    <a href="mailto:azizul.pea@gmail.com" className="hover:text-primary transition-colors">
+                                        azizul.pea@gmail.com
                                     </a>
                                 </div>
                                 <div className="flex items-center gap-3 text-gray-300">
                                     <span className="text-primary">📱</span>
-                                    <a href="tel:+880123456789" className="hover:text-primary transition-colors">
-                                        +880 123 456 789
+                                    <a href="tel:+8801886290214" className="hover:text-primary transition-colors">
+                                        +880 886 290 214
                                     </a>
                                 </div>
                                 <div className="flex items-center gap-3 text-gray-300">

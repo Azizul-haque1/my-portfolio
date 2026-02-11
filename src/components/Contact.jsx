@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -8,21 +9,105 @@ export default function Contact() {
         message: "",
     });
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
+
+    // EmailJS Configuration
+    // Replace these with your actual EmailJS credentials
+    const EMAILJS_SERVICE_ID = "your_service_id"; // Replace with your EmailJS service ID
+    const EMAILJS_TEMPLATE_ID = "your_template_id"; // Replace with your EmailJS template ID
+    const EMAILJS_PUBLIC_KEY = "your_public_key"; // Replace with your EmailJS public key
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+        
+        // Clear status when user starts typing
+        if (status.message) {
+            setStatus({ type: '', message: '' });
+        }
     };
 
-    const handleSubmit = (e) => {
+    const validateForm = () => {
+        // Check if all fields are filled
+        if (!formData.name.trim()) {
+            setStatus({ type: 'error', message: 'Please enter your name.' });
+            return false;
+        }
+        
+        if (!formData.email.trim()) {
+            setStatus({ type: 'error', message: 'Please enter your email address.' });
+            return false;
+        }
+        
+        if (!formData.message.trim()) {
+            setStatus({ type: 'error', message: 'Please enter your message.' });
+            return false;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setStatus({ type: 'error', message: 'Please enter a valid email address.' });
+            return false;
+        }
+
+        return true;
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData); // connect to backend later
+        
+        // Validate form before submitting
+        if (!validateForm()) {
+            return;
+        }
 
-        alert("Message sent successfully!");
+        setIsLoading(true);
+        setStatus({ type: '', message: '' });
 
-        setFormData({
-            name: "",
-            email: "",
-            message: "",
-        });
+        try {
+            // Send email using EmailJS
+            const result = await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                    to_name: "Azizul Haque", // Your name
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+
+            console.log('Email sent successfully:', result);
+            
+            // Show success message
+            setStatus({ 
+                type: 'success', 
+                message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!' 
+            });
+            
+            // Clear form
+            setFormData({
+                name: "",
+                email: "",
+                message: "",
+            });
+
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            
+            // Show error message
+            setStatus({ 
+                type: 'error', 
+                message: 'Sorry, there was an error sending your message. Please try again or contact me directly.' 
+            });
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const contactInfo = [
@@ -181,11 +266,31 @@ export default function Contact() {
                                 Send Message
                             </h3>
 
+                            {/* Status Message */}
+                            {status.message && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className={`mb-6 p-4 rounded-xl border ${
+                                        status.type === 'success' 
+                                            ? 'bg-green-500/10 border-green-500/30 text-green-400' 
+                                            : 'bg-red-500/10 border-red-500/30 text-red-400'
+                                    }`}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <i className={`fa-solid ${
+                                            status.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'
+                                        }`}></i>
+                                        <span>{status.message}</span>
+                                    </div>
+                                </motion.div>
+                            )}
+
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 {/* Name Input */}
                                 <div>
                                     <label className="block text-secondary mb-3 font-semibold">
-                                        Your Name
+                                        Your Name *
                                     </label>
                                     <input
                                         type="text"
@@ -194,16 +299,18 @@ export default function Contact() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         placeholder="Enter your full name"
+                                        disabled={isLoading}
                                         className="w-full p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 
                                                  focus:border-primary/50 focus:bg-white/10 transition-all duration-300 
-                                                 text-secondary placeholder-gray-400 outline-none"
+                                                 text-secondary placeholder-gray-400 outline-none
+                                                 disabled:opacity-50 disabled:cursor-not-allowed"
                                     />
                                 </div>
 
                                 {/* Email Input */}
                                 <div>
                                     <label className="block text-secondary mb-3 font-semibold">
-                                        Your Email
+                                        Your Email *
                                     </label>
                                     <input
                                         type="email"
@@ -212,16 +319,18 @@ export default function Contact() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         placeholder="your.email@example.com"
+                                        disabled={isLoading}
                                         className="w-full p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 
                                                  focus:border-primary/50 focus:bg-white/10 transition-all duration-300 
-                                                 text-secondary placeholder-gray-400 outline-none"
+                                                 text-secondary placeholder-gray-400 outline-none
+                                                 disabled:opacity-50 disabled:cursor-not-allowed"
                                     />
                                 </div>
 
                                 {/* Message Input */}
                                 <div>
                                     <label className="block text-secondary mb-3 font-semibold">
-                                        Your Message
+                                        Your Message *
                                     </label>
                                     <textarea
                                         name="message"
@@ -230,23 +339,38 @@ export default function Contact() {
                                         onChange={handleChange}
                                         rows="6"
                                         placeholder="Tell me about your project, ideas, or how we can work together..."
+                                        disabled={isLoading}
                                         className="w-full p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 
                                                  focus:border-primary/50 focus:bg-white/10 transition-all duration-300 
-                                                 text-secondary placeholder-gray-400 resize-none outline-none"
+                                                 text-secondary placeholder-gray-400 resize-none outline-none
+                                                 disabled:opacity-50 disabled:cursor-not-allowed"
                                     ></textarea>
                                 </div>
 
                                 {/* Submit Button */}
                                 <motion.button
-                                    whileHover={{ scale: 1.02, y: -2 }}
-                                    whileTap={{ scale: 0.98 }}
+                                    whileHover={!isLoading ? { scale: 1.02, y: -2 } : {}}
+                                    whileTap={!isLoading ? { scale: 0.98 } : {}}
                                     type="submit"
-                                    className="w-full p-4 rounded-xl bg-gradient-to-r from-primary to-accent text-white 
-                                             font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 
-                                             transition-all duration-300 flex items-center justify-center gap-3"
+                                    disabled={isLoading}
+                                    className={`w-full p-4 rounded-xl text-white font-semibold text-lg 
+                                             transition-all duration-300 flex items-center justify-center gap-3
+                                             ${isLoading 
+                                                ? 'bg-gray-600 cursor-not-allowed' 
+                                                : 'bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25'
+                                             }`}
                                 >
-                                    <i className="fa-solid fa-paper-plane"></i>
-                                    Send Message
+                                    {isLoading ? (
+                                        <>
+                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                            Sending Message...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <i className="fa-solid fa-paper-plane"></i>
+                                            Send Message
+                                        </>
+                                    )}
                                 </motion.button>
                             </form>
 
@@ -257,6 +381,8 @@ export default function Contact() {
                                     Your information is secure and will never be shared with third parties.
                                 </p>
                             </div>
+
+                        
                         </div>
 
                         {/* Decorative Elements */}
