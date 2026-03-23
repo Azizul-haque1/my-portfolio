@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 import gsap from "gsap";
 import ahPHoto from "../assets/ahPHoto.jpg";
+import ah from "../assets/image.png";
 
 export default function Hero() {
     const imageRef = useRef(null);
@@ -37,27 +38,27 @@ export default function Hero() {
     }, []);
 
     const socialLinks = [
-        { 
-            icon: "fa-brands fa-github", 
-            href: "https://github.com/Azizul-haque1", 
+        {
+            icon: "fa-brands fa-github",
+            href: "https://github.com/Azizul-haque1",
             color: "hover:text-gray-300",
             label: "GitHub"
         },
-        { 
-            icon: "fa-brands fa-linkedin", 
-            href: "https://www.linkedin.com/in/azizul-haque1/", 
+        {
+            icon: "fa-brands fa-linkedin",
+            href: "https://www.linkedin.com/in/azizul-haque1/",
             color: "hover:text-blue-400",
             label: "LinkedIn"
         },
-        { 
-            icon: "fa-brands fa-facebook", 
-            href: "https://web.facebook.com/Ah324242", 
+        {
+            icon: "fa-brands fa-facebook",
+            href: "https://web.facebook.com/Ah324242",
             color: "hover:text-blue-500",
             label: "Facebook"
         },
-        { 
-            icon: "fa-brands fa-twitter", 
-            href: "#", 
+        {
+            icon: "fa-brands fa-twitter",
+            href: "#",
             color: "hover:text-sky-400",
             label: "Twitter"
         }
@@ -73,8 +74,8 @@ export default function Hero() {
             {/* Animated Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/15 to-accent/15 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-info/15 to-success/15 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '4s'}}></div>
+                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-info/15 to-success/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '4s' }}></div>
             </div>
 
             {/* Floating Particles */}
@@ -91,7 +92,7 @@ export default function Hero() {
                     ></div>
                 ))}
             </div>
-            
+
             <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
 
                 {/* Left Side - Text Content */}
@@ -151,7 +152,7 @@ export default function Hero() {
                         transition={{ delay: 1.1, duration: 0.6 }}
                         className="text-gray-300 text-lg leading-relaxed mb-8 max-w-2xl"
                     >
-                        Building modern web applications with the 
+                        Building modern web applications with the
                         <span className="text-primary font-semibold"> MERN stack</span>.
                     </motion.p>
 
@@ -192,7 +193,7 @@ export default function Hero() {
                             <i className="fa-solid fa-message"></i>
                             Get In Touch
                         </motion.button>
-                        
+
                         <motion.button
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
@@ -241,19 +242,20 @@ export default function Hero() {
                         {/* Animated Background Rings */}
                         <div className="absolute inset-0 w-[350px] h-[350px] lg:w-[450px] lg:h-[450px]">
                             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-2xl animate-pulse"></div>
-                            <div className="absolute inset-4 bg-gradient-to-r from-info/15 to-success/15 rounded-full blur-xl animate-pulse" style={{animationDelay: '1s'}}></div>
-                            <div className="absolute inset-8 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-lg animate-pulse" style={{animationDelay: '2s'}}></div>
+                            <div className="absolute inset-4 bg-gradient-to-r from-info/15 to-success/15 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+                            <div className="absolute inset-8 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-lg animate-pulse" style={{ animationDelay: '2s' }}></div>
                         </div>
-                        
+
                         {/* Main Image Container */}
                         <div className="relative w-[320px] h-[320px] lg:w-[400px] lg:h-[400px] glass-card p-3 rounded-full floating">
                             <div className="w-full h-full rounded-full overflow-hidden border-4 border-gradient-to-r from-primary via-accent to-info relative">
                                 <img
-                                    src={ahPHoto}
+                                    src={ah}
+                                    // src={ahPHoto}
                                     alt="Azizul Haque - Full Stack Developer"
                                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                                 />
-                                
+
                                 {/* Image Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-accent/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
@@ -267,7 +269,7 @@ export default function Hero() {
                         >
                             <span className="text-2xl">💻</span>
                         </motion.div>
-                        
+
                         <motion.div
                             animate={{ rotate: -360 }}
                             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
@@ -275,7 +277,7 @@ export default function Hero() {
                         >
                             <span className="text-2xl">🚀</span>
                         </motion.div>
-                        
+
                         <motion.div
                             animate={{ y: [-10, 10, -10] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -283,7 +285,7 @@ export default function Hero() {
                         >
                             <span className="text-xl">⚛️</span>
                         </motion.div>
-                        
+
                         <motion.div
                             animate={{ y: [10, -10, 10] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

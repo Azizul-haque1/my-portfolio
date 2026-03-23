@@ -23,7 +23,7 @@ export default function Contact() {
             ...prevState,
             [name]: value
         }));
-        
+
         // Clear status when user starts typing
         if (status.message) {
             setStatus({ type: '', message: '' });
@@ -36,12 +36,12 @@ export default function Contact() {
             setStatus({ type: 'error', message: 'Please enter your name.' });
             return false;
         }
-        
+
         if (!formData.email.trim()) {
             setStatus({ type: 'error', message: 'Please enter your email address.' });
             return false;
         }
-        
+
         if (!formData.message.trim()) {
             setStatus({ type: 'error', message: 'Please enter your message.' });
             return false;
@@ -59,7 +59,7 @@ export default function Contact() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validate form before submitting
         if (!validateForm()) {
             return;
@@ -83,13 +83,13 @@ export default function Contact() {
             );
 
             console.log('Email sent successfully:', result);
-            
+
             // Show success message
-            setStatus({ 
-                type: 'success', 
-                message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!' 
+            setStatus({
+                type: 'success',
+                message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!'
             });
-            
+
             // Clear form
             setFormData({
                 name: "",
@@ -99,11 +99,11 @@ export default function Contact() {
 
         } catch (error) {
             console.error('Email sending failed:', error);
-            
+
             // Show error message
-            setStatus({ 
-                type: 'error', 
-                message: 'Sorry, there was an error sending your message. Please try again or contact me directly.' 
+            setStatus({
+                type: 'error',
+                message: 'Sorry, there was an error sending your message. Please try again or contact me directly.'
             });
         } finally {
             setIsLoading(false);
@@ -114,19 +114,19 @@ export default function Contact() {
         {
             icon: "fa-solid fa-envelope",
             label: "Email",
-            value: "hello@example.com",
-            link: "mailto:hello@example.com"
+            value: "azizul.pea@gmail.com",
+            link: "mailto:azizul.pea@gmail.com"
         },
         {
             icon: "fa-solid fa-phone",
             label: "Phone",
-            value: "+1 (555) 123-4567",
+            value: " +8801886290214",
             link: "tel:+15551234567"
         },
         {
             icon: "fa-solid fa-location-dot",
             label: "Location",
-            value: "New York, USA",
+            value: "Dhaka, Bangladesh",
             link: "#"
         }
     ];
@@ -148,7 +148,7 @@ export default function Contact() {
             <div className="absolute bottom-0 right-1/3 w-80 h-80 bg-gradient-to-r from-info/10 to-success/10 rounded-full blur-3xl"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                
+
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: -30 }}
@@ -160,7 +160,7 @@ export default function Contact() {
                         Let's Work Together
                     </h2>
                     <p className="text-gray-300 text-xl leading-relaxed max-w-3xl mx-auto">
-                        Ready to bring your ideas to life? Let's collaborate and create something 
+                        Ready to bring your ideas to life? Let's collaborate and create something
                         <span className="text-primary font-semibold"> extraordinary</span> together.
                     </p>
                 </motion.div>
@@ -181,9 +181,9 @@ export default function Contact() {
                             </h3>
 
                             <p className="text-gray-300 mb-8 text-lg leading-relaxed">
-                                I'm a passionate Full Stack Developer specializing in creating 
-                                <span className="text-primary font-semibold"> fast, scalable, and modern</span> web applications. 
-                                Whether you have a startup idea or need to enhance your existing platform, 
+                                I'm a passionate Full Stack Developer specializing in creating
+                                <span className="text-primary font-semibold"> fast, scalable, and modern</span> web applications.
+                                Whether you have a startup idea or need to enhance your existing platform,
                                 I'm here to help transform your vision into reality.
                             </p>
 
@@ -271,16 +271,14 @@ export default function Contact() {
                                 <motion.div
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`mb-6 p-4 rounded-xl border ${
-                                        status.type === 'success' 
-                                            ? 'bg-green-500/10 border-green-500/30 text-green-400' 
+                                    className={`mb-6 p-4 rounded-xl border ${status.type === 'success'
+                                            ? 'bg-green-500/10 border-green-500/30 text-green-400'
                                             : 'bg-red-500/10 border-red-500/30 text-red-400'
-                                    }`}
+                                        }`}
                                 >
                                     <div className="flex items-center gap-2">
-                                        <i className={`fa-solid ${
-                                            status.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'
-                                        }`}></i>
+                                        <i className={`fa-solid ${status.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'
+                                            }`}></i>
                                         <span>{status.message}</span>
                                     </div>
                                 </motion.div>
@@ -355,10 +353,10 @@ export default function Contact() {
                                     disabled={isLoading}
                                     className={`w-full p-4 rounded-xl text-white font-semibold text-lg 
                                              transition-all duration-300 flex items-center justify-center gap-3
-                                             ${isLoading 
-                                                ? 'bg-gray-600 cursor-not-allowed' 
-                                                : 'bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25'
-                                             }`}
+                                             ${isLoading
+                                            ? 'bg-gray-600 cursor-not-allowed'
+                                            : 'bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/25'
+                                        }`}
                                 >
                                     {isLoading ? (
                                         <>
@@ -382,7 +380,7 @@ export default function Contact() {
                                 </p>
                             </div>
 
-                        
+
                         </div>
 
                         {/* Decorative Elements */}

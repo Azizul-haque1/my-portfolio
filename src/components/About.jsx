@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import ahPHoto from '../assets/ahPHoto.jpg'
+import ah from "../assets/image.png";
 
 export default function About() {
     const imageRef = useRef(null);
@@ -15,7 +16,7 @@ export default function About() {
     }, []);
 
     const skills = [
-        { 
+        {
             category: "Frontend Development",
             color: "from-blue-500 to-cyan-500",
             icon: "fa-solid fa-code",
@@ -28,7 +29,7 @@ export default function About() {
                 { name: "JavaScript", level: 90, icon: "fa-brands fa-js-square" }
             ]
         },
-        { 
+        {
             category: "Backend Development",
             color: "from-green-500 to-emerald-500",
             icon: "fa-solid fa-server",
@@ -40,7 +41,7 @@ export default function About() {
                 { name: "Socket.io", level: 70, icon: "fa-solid fa-comments" }
             ]
         },
-        { 
+        {
             category: "Database & Cloud",
             color: "from-purple-500 to-pink-500",
             icon: "fa-solid fa-database",
@@ -51,7 +52,7 @@ export default function About() {
                 { name: "Firebase", level: 65, icon: "fa-solid fa-fire" }
             ]
         },
-        { 
+        {
             category: "Tools & Workflow",
             color: "from-orange-500 to-red-500",
             icon: "fa-solid fa-tools",
@@ -84,14 +85,14 @@ export default function About() {
                         About Me
                     </h2>
                     <p className="text-gray-300 text-xl leading-relaxed max-w-3xl mx-auto">
-                        Passionate about creating digital experiences and 
+                        Passionate about creating digital experiences and
                         <span className="text-primary font-semibold"> learning new technologies</span> every day.
                     </p>
                 </motion.div>
 
                 {/* Main Content */}
                 <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-                    
+
                     {/* Left Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
@@ -105,12 +106,12 @@ export default function About() {
                                 <i className="fa-solid fa-hand-wave"></i>
                                 Nice to meet you
                             </div>
-                            
+
                             <h3 className="text-3xl lg:text-4xl font-bold mb-6 text-secondary">
-                                I'm <span className="text-gradient">Azizul Haque</span>, 
+                                I'm <span className="text-gradient">Azizul Haque</span>,
                                 <br />a passionate Full Stack Developer
                             </h3>
-                            
+
                             <div className="text-gray-300 text-lg leading-relaxed space-y-6">
                                 <div>
                                     <h4 className="text-xl font-semibold text-primary mb-3 flex items-center gap-2">
@@ -118,10 +119,10 @@ export default function About() {
                                         My Programming Journey
                                     </h4>
                                     <p>
-                                        My coding adventure began during my university days when I first encountered HTML and CSS. 
-                                        What started as curiosity quickly turned into passion when I built my first interactive website. 
-                                        The moment I saw my code come to life in the browser, I knew I had found my calling. 
-                                        Since then, I've been on an exciting journey of continuous learning, diving deep into 
+                                        My coding adventure began during my university days when I first encountered HTML and CSS.
+                                        What started as curiosity quickly turned into passion when I built my first interactive website.
+                                        The moment I saw my code come to life in the browser, I knew I had found my calling.
+                                        Since then, I've been on an exciting journey of continuous learning, diving deep into
                                         JavaScript, React, Node.js, and the entire MERN stack ecosystem.
                                     </p>
                                 </div>
@@ -132,10 +133,10 @@ export default function About() {
                                         What I Love Doing
                                     </h4>
                                     <p>
-                                        I'm passionate about building user-centric web applications that solve real problems. 
-                                        There's something magical about transforming an idea into a functional, beautiful application 
-                                        that people can actually use. I particularly enjoy working on full-stack projects where 
-                                        I can handle everything from database design to responsive frontend interfaces. 
+                                        I'm passionate about building user-centric web applications that solve real problems.
+                                        There's something magical about transforming an idea into a functional, beautiful application
+                                        that people can actually use. I particularly enjoy working on full-stack projects where
+                                        I can handle everything from database design to responsive frontend interfaces.
                                         The challenge of optimizing performance and creating seamless user experiences keeps me motivated every day.
                                     </p>
                                 </div>
@@ -146,9 +147,9 @@ export default function About() {
                                         Beyond the Code
                                     </h4>
                                     <p>
-                                        When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source projects, 
-                                        or playing cricket with friends. I'm also an avid reader of tech blogs and enjoy watching sci-fi movies 
-                                        that inspire new ideas for my projects. Photography is another hobby of mine - I love capturing moments 
+                                        When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source projects,
+                                        or playing cricket with friends. I'm also an avid reader of tech blogs and enjoy watching sci-fi movies
+                                        that inspire new ideas for my projects. Photography is another hobby of mine - I love capturing moments
                                         and applying the same attention to detail I use in coding to create compelling visual stories.
                                     </p>
                                 </div>
@@ -159,9 +160,9 @@ export default function About() {
                                         My Approach
                                     </h4>
                                     <p>
-                                        I believe in writing clean, maintainable code and always staying curious about new technologies. 
-                                        Every project is an opportunity to learn something new and push my boundaries. I'm a firm believer 
-                                        in the power of collaboration and enjoy working with teams where we can learn from each other 
+                                        I believe in writing clean, maintainable code and always staying curious about new technologies.
+                                        Every project is an opportunity to learn something new and push my boundaries. I'm a firm believer
+                                        in the power of collaboration and enjoy working with teams where we can learn from each other
                                         and create something amazing together.
                                     </p>
                                 </div>
@@ -224,7 +225,8 @@ export default function About() {
                             <div className="relative w-full h-full rounded-3xl overflow-hidden border border-white/10 
                                           shadow-2xl group">
                                 <img
-                                    src={ahPHoto}
+                                    // src={ahPHoto}
+                                    src={ah}
                                     alt="Profile"
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
@@ -261,7 +263,7 @@ export default function About() {
                             >
                                 <div className="p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 
                                               hover:bg-white/8 hover:border-primary/20 transition-all duration-500 h-full">
-                                    
+
                                     {/* Category Header */}
                                     <div className="flex items-center gap-4 mb-8">
                                         <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${category.color} 
@@ -317,7 +319,7 @@ export default function About() {
                                                             <div className="absolute inset-0 bg-white/20 rounded-full animate-pulse"></div>
                                                         </motion.div>
                                                     </div>
-                                                    
+
                                                     {/* Skill Level Indicator */}
                                                     <motion.div
                                                         initial={{ scale: 0 }}
@@ -359,7 +361,7 @@ export default function About() {
                             <h4 className="text-2xl font-bold text-gradient mb-6">
                                 Technical Proficiency Overview
                             </h4>
-                            
+
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                                 {skills.map((category, index) => {
                                     const avgLevel = Math.round(category.skills.reduce((acc, skill) => acc + skill.level, 0) / category.skills.length);
@@ -391,7 +393,7 @@ export default function About() {
                             Let's Build Something Together
                         </h3>
                         <p className="text-gray-300 mb-8 text-lg leading-relaxed">
-                            I'm always excited to work on new projects and collaborate with other developers. 
+                            I'm always excited to work on new projects and collaborate with other developers.
                             Let's create something amazing!
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

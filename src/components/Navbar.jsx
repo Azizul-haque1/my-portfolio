@@ -25,15 +25,14 @@ export default function Navbar() {
     ];
 
     return (
-        <motion.nav 
+        <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                scrolled 
-                    ? 'glass-nav py-3 shadow-lg' 
-                    : 'bg-transparent py-4'
-            }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                ? 'glass-nav py-3 shadow-lg'
+                : 'bg-transparent py-4'
+                }`}
         >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="flex items-center justify-between">
@@ -78,10 +77,10 @@ export default function Navbar() {
                         >
                             Let's Talk
                         </motion.a>
-                        
+
                         <motion.a
-                            href="/Azizul_Haque_CV.pdf"
-                            download
+                            href="/resume_me.pdf"
+                            download='Azizul_Haque_Resume.pdf'
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                             className="btn btn-primary btn-glow px-6 py-2.5 rounded-full font-semibold 
@@ -100,15 +99,12 @@ export default function Navbar() {
                                  hover:bg-white/10 transition-all duration-300"
                     >
                         <div className="w-6 h-6 flex flex-col justify-center items-center">
-                            <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-                                open ? 'rotate-45 translate-y-1' : '-translate-y-1'
-                            }`}></span>
-                            <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-                                open ? 'opacity-0' : 'opacity-100'
-                            }`}></span>
-                            <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-                                open ? '-rotate-45 -translate-y-1' : 'translate-y-1'
-                            }`}></span>
+                            <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${open ? 'rotate-45 translate-y-1' : '-translate-y-1'
+                                }`}></span>
+                            <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${open ? 'opacity-0' : 'opacity-100'
+                                }`}></span>
+                            <span className={`block w-5 h-0.5 bg-current transition-all duration-300 ${open ? '-rotate-45 -translate-y-1' : 'translate-y-1'
+                                }`}></span>
                         </div>
                     </motion.button>
                 </div>
@@ -116,7 +112,7 @@ export default function Navbar() {
                 {/* MOBILE MENU */}
                 <motion.div
                     initial={false}
-                    animate={{ 
+                    animate={{
                         height: open ? "auto" : 0,
                         opacity: open ? 1 : 0
                     }}
@@ -130,13 +126,13 @@ export default function Navbar() {
                                 href={item.link}
                                 onClick={() => setOpen(false)}
                                 initial={{ opacity: 0, x: -20 }}
-                                animate={{ 
-                                    opacity: open ? 1 : 0, 
-                                    x: open ? 0 : -20 
+                                animate={{
+                                    opacity: open ? 1 : 0,
+                                    x: open ? 0 : -20
                                 }}
-                                transition={{ 
+                                transition={{
                                     delay: open ? index * 0.1 : 0,
-                                    duration: 0.3 
+                                    duration: 0.3
                                 }}
                                 className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 
                                          rounded-lg transition-all duration-300 font-medium"
@@ -144,15 +140,15 @@ export default function Navbar() {
                                 {item.name}
                             </motion.a>
                         ))}
-                        
+
                         <div className="pt-4 space-y-3 border-t border-white/10">
                             <motion.a
                                 href="#contact"
                                 onClick={() => setOpen(false)}
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ 
-                                    opacity: open ? 1 : 0, 
-                                    y: open ? 0 : 20 
+                                animate={{
+                                    opacity: open ? 1 : 0,
+                                    y: open ? 0 : 20
                                 }}
                                 transition={{ delay: open ? 0.4 : 0 }}
                                 className="block px-4 py-3 text-center text-gray-300 hover:text-primary 
@@ -160,15 +156,15 @@ export default function Navbar() {
                             >
                                 Let's Talk
                             </motion.a>
-                            
+
                             <motion.a
-                                href="/Azizul_Haque_CV.pdf"
-                                download
+                                href="/resume_me.pdf"
+                                download='Azizul_Haque_Resume.pdf'
                                 onClick={() => setOpen(false)}
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ 
-                                    opacity: open ? 1 : 0, 
-                                    y: open ? 0 : 20 
+                                animate={{
+                                    opacity: open ? 1 : 0,
+                                    y: open ? 0 : 20
                                 }}
                                 transition={{ delay: open ? 0.5 : 0 }}
                                 className="btn btn-primary btn-glow w-full py-3 rounded-full font-semibold 

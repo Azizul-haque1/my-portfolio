@@ -1,20 +1,27 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
 
 export default function CustomCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorState, setCursorState] = useState('default');
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+  
   const cursorRef = useRef(null);
   const trailRef = useRef(null);
-  const magneticTarget = useRef(null);
+  
+  // Physics state
+  const mouse = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const cursor = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const trail = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const requestRef = useRef(null);
 
-  // Smooth cursor movement with requestAnimationFrame
-  const updateCursorPosition = useCallback((e) => {
+  // Smooth cursor movement without React state re-renders
+  const updateMousePosition = useCallback((e) => {
     const { clientX: x, clientY: y } = e;
-    setMousePosition({ x, y });
+    if (!isVisible) setIsVisible(true);
 
     // Check for magnetic elements
+    let isMagnetic = false;
     const magneticElement = e.target.closest('[data-magnetic="true"], .magnetic');
+    
     if (magneticElement && cursorState === 'hover') {
       const rect = magneticElement.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
@@ -23,33 +30,50 @@ export default function CustomCursor() {
       
       if (distance < 50) {
         const magnetStrength = 0.3;
-        const magnetX = centerX + (x - centerX) * magnetStrength;
-        const magnetY = centerY + (y - centerY) * magnetStrength;
-        
-        if (cursorRef.current) {
-          cursorRef.current.style.left = magnetX + 'px';
-          cursorRef.current.style.top = magnetY + 'px';
-          cursorRef.current.classList.add('magnetic');
-        }
-        return;
+        mouse.current = {
+          x: centerX + (x - centerX) * magnetStrength,
+          y: centerY + (y - centerY) * magnetStrength
+        };
+        if (cursorRef.current) cursorRef.current.classList.add('magnetic');
+        isMagnetic = true;
       }
     }
 
-    // Normal cursor movement
+    if (!isMagnetic) {
+      if (cursorRef.current) cursorRef.current.classList.remove('magnetic');
+      mouse.current = { x, y };
+    }
+  }, [cursorState, isVisible]);
+
+  // RequestAnimationFrame loop for butter-smooth interpolation
+  const renderCursor = useCallback(() => {
+    // Lerp factor (higher = faster snap, lower = smoother follow)
+    const cursorSpeed = 0.3;
+    const trailSpeed = 0.15;
+
+    // Direct assignment for inner cursor (or very fast lerp)
+    cursor.current.x += (mouse.current.x - cursor.current.x) * cursorSpeed;
+    cursor.current.y += (mouse.current.y - cursor.current.y) * cursorSpeed;
+    
+    // Smooth lerp for trail
+    trail.current.x += (mouse.current.x - trail.current.x) * trailSpeed;
+    trail.current.y += (mouse.current.y - trail.current.y) * trailSpeed;
+
     if (cursorRef.current) {
-      cursorRef.current.style.left = x + 'px';
-      cursorRef.current.style.top = y + 'px';
-      cursorRef.current.classList.remove('magnetic');
+      cursorRef.current.style.transform = `translate3d(calc(${cursor.current.x}px - 50%), calc(${cursor.current.y}px - 50%), 0)`;
+    }
+    
+    if (trailRef.current) {
+      trailRef.current.style.transform = `translate3d(calc(${trail.current.x}px - 50%), calc(${trail.current.y}px - 50%), 0)`;
     }
 
-    // Trail follows with slight delay
-    if (trailRef.current) {
-      requestAnimationFrame(() => {
-        trailRef.current.style.left = x + 'px';
-        trailRef.current.style.top = y + 'px';
-      });
-    }
-  }, [cursorState]);
+    requestRef.current = requestAnimationFrame(renderCursor);
+  }, []);
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(renderCursor);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [renderCursor]);
 
   // Handle different cursor states
   const handleMouseEnter = useCallback((e) => {
@@ -112,7 +136,7 @@ export default function CustomCursor() {
     if (isTouchDevice) return;
 
     // Add event listeners
-    document.addEventListener('mousemove', updateCursorPosition, { passive: true });
+    document.addEventListener('mousemove', updateMousePosition, { passive: true });
     document.addEventListener('mouseover', handleMouseEnter, { passive: true });
     document.addEventListener('mouseout', handleMouseLeave, { passive: true });
     document.addEventListener('mousedown', handleMouseDown, { passive: true });
@@ -121,7 +145,7 @@ export default function CustomCursor() {
     document.addEventListener('mouseleave', handleMouseLeaveWindow, { passive: true });
 
     return () => {
-      document.removeEventListener('mousemove', updateCursorPosition);
+      document.removeEventListener('mousemove', updateMousePosition);
       document.removeEventListener('mouseover', handleMouseEnter);
       document.removeEventListener('mouseout', handleMouseLeave);
       document.removeEventListener('mousedown', handleMouseDown);
@@ -129,7 +153,7 @@ export default function CustomCursor() {
       document.removeEventListener('mouseenter', handleMouseEnterWindow);
       document.removeEventListener('mouseleave', handleMouseLeaveWindow);
     };
-  }, [updateCursorPosition, handleMouseEnter, handleMouseLeave, handleMouseDown, handleMouseUp, handleMouseEnterWindow, handleMouseLeaveWindow]);
+  }, [updateMousePosition, handleMouseEnter, handleMouseLeave, handleMouseDown, handleMouseUp, handleMouseEnterWindow, handleMouseLeaveWindow]);
 
   // Don't render on touch devices
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
@@ -157,8 +181,6 @@ export default function CustomCursor() {
         ref={cursorRef}
         className={getCursorClasses()}
         style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
           opacity: isVisible ? 1 : 0,
         }}
       />
@@ -168,8 +190,6 @@ export default function CustomCursor() {
         ref={trailRef}
         className={getTrailClasses()}
         style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
           opacity: isVisible ? 1 : 0,
         }}
       />
